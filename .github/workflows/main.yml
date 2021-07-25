@@ -55,9 +55,7 @@ jobs:
         run: |
           git config --global user.name "zsnmwy"
           git config --global user.email "zsnmwy@no-reply.com"
-          git add .
-          git commit -m "Commit from GitHub Actions (CI)"
-          git push origin master
+          git remote
           git remote add gogs "https://${GOGS_USERNAME}:${GOGS_PASSWORD}@gogs.up.railway.app/zsnmwy/dst-mod-list.git"
           git remote
           git push gogs master
