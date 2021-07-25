@@ -58,4 +58,5 @@ jobs:
           git commit -m "Commit from GitHub Actions (CI)"
           git push origin master
           git remote add gogs "https://${GOGS_USERNAME}:${GOGS_PASSWORD}@gogs.up.railway.app/zsnmwy/dst-mod-list.git"
-          git push -u gogs master
+          git config lfs.https://gogs.up.railway.app/zsnmwy/dst-mod-list.git/info/lfs.locksverify false
+          git push gogs master
