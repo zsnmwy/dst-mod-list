@@ -1,7 +1,7 @@
 
 # Dst Mod List
 
-The most popular mods in the top 150.
+The most popular mods in the top 300.
 
 Use GitHub Actions to automatically update every night.
 
