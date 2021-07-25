@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "Mod" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "ModId" INTEGER NOT NULL,
+    "name" TEXT NOT NULL,
+    "version" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
