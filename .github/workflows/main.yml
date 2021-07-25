@@ -44,6 +44,7 @@ jobs:
           curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
           sudo apt-get install git-lfs -y
           git lfs install
+          git config lfs.https://gogs.up.railway.app/zsnmwy/dst-mod-list.git/info/lfs.locksverify false
 
       - name: Update DST MOD
         run: |
@@ -58,5 +59,5 @@ jobs:
           git commit -m "Commit from GitHub Actions (CI)"
           git push origin master
           git remote add gogs "https://${GOGS_USERNAME}:${GOGS_PASSWORD}@gogs.up.railway.app/zsnmwy/dst-mod-list.git"
-          git config lfs.https://gogs.up.railway.app/zsnmwy/dst-mod-list.git/info/lfs.locksverify false
+          git remote
           git push gogs master
