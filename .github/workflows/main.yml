@@ -22,18 +22,12 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: macos-10.15
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.3.0
-        with:
-          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 14.16.1 # optional
 
       - name: Install dependencies
         run: npm install
@@ -41,10 +35,12 @@ jobs:
       - name: Config Git LFS
         run: |
           echo $(whoami)
-          curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-          sudo apt-get install git-lfs -y
-          git lfs install
           git config lfs.https://gogs.up.railway.app/zsnmwy/dst-mod-list.git/info/lfs.locksverify false
+          git config --global user.name "zsnmwy"
+          git config --global user.email "zsnmwy@no-reply.com"
+          git remote
+          git remote add gogs "https://${GOGS_USERNAME}:${GOGS_PASSWORD}@gogs.up.railway.app/zsnmwy/dst-mod-list.git"
+          git remote
 
       - name: Update DST MOD
         run: |
@@ -53,9 +49,4 @@ jobs:
 
       - name: Add & Commit
         run: |
-          git config --global user.name "zsnmwy"
-          git config --global user.email "zsnmwy@no-reply.com"
-          git remote
-          git remote add gogs "https://${GOGS_USERNAME}:${GOGS_PASSWORD}@gogs.up.railway.app/zsnmwy/dst-mod-list.git"
-          git remote
           git push gogs master
